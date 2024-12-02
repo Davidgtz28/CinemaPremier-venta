@@ -41,10 +41,24 @@ return "venta-form";
 
 @PostMapping
 public String guardarVenta(Venta venta) {
-ventaService.guardar(venta);
-return "redirect:/ventas";
-
+    if (venta.getId() != null) {
+        // Si el ID no es nulo, actualizamos la venta existente
+        Venta ventaExistente = ventaService.obtenerPorId(venta.getId());
+        if (ventaExistente != null) {
+            ventaExistente.setCliente(venta.getCliente());
+            ventaExistente.setProductos(venta.getProductos());
+            ventaExistente.setTotal(venta.getTotal());
+            ventaService.guardar(ventaExistente);
+        }
+    } else {
+        // Si el ID es nulo, creamos una nueva venta
+        ventaService.guardar(venta);
+    }
+    return "redirect:/ventas";
 }
+
+
+
 
 @GetMapping("/editar/{id}")
 public String mostrarFormularioEditarVenta(@PathVariable Long id, Model model) {

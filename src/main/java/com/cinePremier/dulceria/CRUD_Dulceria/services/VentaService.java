@@ -22,9 +22,10 @@ public class VentaService {
     public List<Venta> listarTodas(){
         return ventaRepository.findAll(); 
     }
-    public Venta guardar(Venta venta){
-        return ventaRepository.save(venta);
-    }
+    public void guardar(Venta venta) {
+    ventaRepository.save(venta); // JPA manejará la actualización si el ID ya existe
+}
+
     public Venta obtenerPorId(Long id){
         return ventaRepository.findById(id).orElse(null);
     }
