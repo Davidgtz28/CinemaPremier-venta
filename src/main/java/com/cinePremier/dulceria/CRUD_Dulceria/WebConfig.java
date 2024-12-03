@@ -8,12 +8,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Permite CORS en todos los endpoints
-                .allowedOrigins("https://cinemapremier-venta-fxfrcegeb3b6gdb5.mexicocentral-01.azurewebsites.net/") // Especifica el origen de tu frontend (ajústalo a tu URL)
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // Métodos permitidos
-                .allowedHeaders("*") // Cabeceras permitidas
-                .allowCredentials(true); // Si necesitas enviar cookies o credenciales
-    }
+    @Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				// Permitir todos los orígenes, métodos y encabezados
+				registry.addMapping("/")
+						.allowedOrigins("*") // Permitir todos los orígenes
+						.allowedMethods("*") // Permitir todos los métodos (GET, POST, etc.)
+						.allowedHeaders("*"); // Permitir todos los encabezados
+			}
+		};
+	}
 }

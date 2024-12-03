@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ventas")
-@CrossOrigin(origins = "https://cinemapremier-venta-fxfrcegeb3b6gdb5.mexicocentral-01.azurewebsites.net/")  // Habilita CORS solo para este controlador
+@CrossOrigin(origins = "https://cinemapremier-venta-fxfrcegeb3b6gdb5.mexicocentral-01.azurewebsites.net")  
 public class VentaController {
 
     @Autowired
