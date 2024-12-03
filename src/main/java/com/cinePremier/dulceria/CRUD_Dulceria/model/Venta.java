@@ -1,29 +1,36 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.cinePremier.dulceria.CRUD_Dulceria.model;
 
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.List;
 
-/**
- *
- * @author Jezuz
- */
 @Entity
 public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String cliente;
-    private String productos;
-    private String total;
-    
-    public Venta(){}
 
+    private String cliente;
+
+    @ElementCollection
+    private List<String> productos;
+
+    private Double total;
+
+    // Constructor vacío requerido por JPA
+    public Venta() {}
+
+    // Constructor con parámetros
+    public Venta(String cliente, List<String> productos, Double total) {
+        this.cliente = cliente;
+        this.productos = productos;
+        this.total = total;
+    }
+
+    // Getters y setters
     public Long getId() {
         return id;
     }
@@ -40,22 +47,19 @@ public class Venta {
         this.cliente = cliente;
     }
 
-    public String getProductos() {
+    public List<String> getProductos() {
         return productos;
     }
 
-    public void setProductos(String productos) {
+    public void setProductos(List<String> productos) {
         this.productos = productos;
     }
 
-    public String getTotal() {
+    public Double getTotal() {
         return total;
     }
 
-    public void setTotal(String total) {
+    public void setTotal(Double total) {
         this.total = total;
     }
-    
-    
-    
 }
