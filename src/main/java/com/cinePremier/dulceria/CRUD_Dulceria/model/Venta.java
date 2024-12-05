@@ -16,7 +16,7 @@ public class Venta {
     private String cliente;
 
     @ElementCollection
-    private List<String> productos;
+    private List<String> nombre;
 
     private Double total;
 
@@ -24,9 +24,9 @@ public class Venta {
     public Venta() {}
 
     // Constructor con parámetros
-    public Venta(String cliente, List<String> productos, Double total) {
+    public Venta(String cliente, List<String> nombre, Double total) {
         this.cliente = cliente;
-        this.productos = productos;
+        this.nombre = nombre;
         this.total = total;
     }
 
@@ -47,12 +47,12 @@ public class Venta {
         this.cliente = cliente;
     }
 
-    public List<String> getProductos() {
-        return productos;
+    public List<String> getNombre() {
+        return nombre;
     }
 
-    public void setProductos(List<String> productos) {
-        this.productos = productos;
+    public void setNombre(List<String> nombre) {
+        this.nombre = nombre;
     }
 
     public Double getTotal() {
