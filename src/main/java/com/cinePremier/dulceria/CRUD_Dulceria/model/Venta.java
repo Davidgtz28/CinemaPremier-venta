@@ -20,7 +20,7 @@ public class Venta {
 
     private Double total;
 
-    // Constructor vacío requerido por JPA
+    // Constructor vacío requerido por JPA ayuda
     public Venta() {}
 
     // Constructor con parámetros
