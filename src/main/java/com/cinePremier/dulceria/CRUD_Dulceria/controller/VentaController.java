@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/ventas")
-@CrossOrigin(origins = "http://localhost:8080https://cinemapremier-venta-fxfrcegeb3b6gdb5.mexicocentral-01.azurewebsites.net") // Habilita CORS para todo el controlador
+@CrossOrigin(origins = "https://cinemapremier-venta-fxfrcegeb3b6gdb5.mexicocentral-01.azurewebsites.net:") // Habilita CORS para todo el controlador
 public class VentaController {
 
     @Autowired
@@ -52,7 +52,7 @@ public class VentaController {
         if (ventaExistente != null) {
             // Actualizar los campos de la venta
             ventaExistente.setCliente(venta.getCliente());
-            ventaExistente.setProductos(venta.getProductos());
+            ventaExistente.setNombre(venta.getNombre());
             ventaExistente.setTotal(venta.getTotal());
             // Guardar la venta actualizada
             ventaService.guardar(ventaExistente);
