@@ -52,7 +52,7 @@ public class VentaController {
         if (ventaExistente != null) {
             // Actualizar los campos de la venta
             ventaExistente.setCliente(venta.getCliente());
-            ventaExistente.setNombre(venta.getNombre());
+            ventaExistente.setProductos(venta.getProductos());
             ventaExistente.setTotal(venta.getTotal());
             // Guardar la venta actualizada
             ventaService.guardar(ventaExistente);
